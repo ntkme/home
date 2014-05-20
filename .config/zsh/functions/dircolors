@@ -1,0 +1,69 @@
+#!/bin/zsh
+
+dircolors () {
+  local LS_COLORS attribute color background_color modifier background_modifier
+
+  [ -n "$LSCOLORS" ] || local LSCOLORS='exfxcxdxbxegedabagacad'
+
+  local i
+
+  for i in {0..20..2}; do
+    case $i in
+      0)
+        attribute=di
+        ;;
+      2)
+        attribute=ln
+        ;;
+      4)
+        attribute=so
+        ;;
+      6)
+        attribute=pi
+        ;;
+      8)
+        attribute=ex
+        ;;
+      10)
+        attribute=bd
+        ;;
+      12)
+        attribute=cd
+        ;;
+      14)
+        attribute=su
+        ;;
+      16)
+        attribute=sg
+        ;;
+      18)
+        attribute=tw
+        ;;
+      20)
+        attribute=ow
+        ;;
+    esac
+
+    modifier=$(printf "%d" "'${LSCOLORS:($i):1}")
+    if [ "$modifier" -ge 97 ] && [ "$modifier" -le 104 ]; then
+      color="$(($modifier - 67))"
+    elif [ "$modifier" -ge 65 ] && [ "$modifier" -le 72 ]; then
+      color="01;$(($modifier - 35))"
+    elif [ "$modifier" -eq 120 ]; then
+      color="00"
+    fi
+
+    background_modifier=$(printf "%d" "'${LSCOLORS:($i + 1):1}")
+    if [ "$background_modifier" -ge 97 ] && [ "$background_modifier" -le 104 ]; then
+      background_color=";$(($background_modifier - 57))"
+    elif [ "$background_modifier" -ge 65 ] && [ "$background_modifier" -le 72 ]; then
+      background_color=";01;$(($background_modifier - 25))"
+    fi
+
+    LS_COLORS+="$attribute=$color$background_color:"
+  done
+  echo "LS_COLORS='$LS_COLORS';"
+  echo "export LS_COLORS"
+}
+
+dircolors

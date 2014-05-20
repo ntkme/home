@@ -1,0 +1,25 @@
+# Wildcard Blacklist
+/*
+
+# Wildcard Whitelist
+!/.*env
+!/.*profile
+!/.*rc
+!/.*login
+!/.*logout
+!/.config/bash/
+!/.config/fish/
+!/.config/git/
+!/.config/sh/
+!/.config/zsh/
+
+# Blacklist
+/.config/fish/fish_history
+/.config/fish/fish_read_history
+/.config/fish/fishd.*
+/.htoprc
+/.netrc
+
+# Whitelist
+!/.gitignore
+!/.tmux.conf

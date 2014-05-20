@@ -1,0 +1,26 @@
+#!/bin/zsh
+
+autoload -U add-zsh-hook zsh_prompt zsh_right_prompt
+
+_prompt___precmd () {
+  zsh_prompt
+  zsh_right_prompt
+  local zero='%([BSUbfksu]|[FB]{*})'
+  local left_colno=${(m)#${(f)"${(%)${(S)${(e)PROMPT}//$~zero/}}"}[1]}
+  local right_colno=${(m)#${"${(%)${(S)${(e)RPROMPT}//$~zero/}}"}}
+  if [ $((left_colno % COLUMNS + right_colno + 1)) -lt $COLUMNS ]; then
+    local colno=$((COLUMNS - (left_colno + right_colno + 1) % COLUMNS))
+    local -a prompt_lines
+    prompt_lines=(${(f)PROMPT})
+    prompt_lines[1]=$prompt_lines[1]${(l:colno:: :)}$RPROMPT
+    PROMPT=${(F)prompt_lines}
+    RPROMPT=
+  fi
+}
+
+zsh_smart_prompt () {
+  add-zsh-hook -D precmd "prompt_*_precmd"
+  add-zsh-hook precmd _prompt___precmd
+}
+
+zsh_smart_prompt

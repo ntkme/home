@@ -1,0 +1,140 @@
+#!/bin/bash
+
+battery-indicator () {
+  local Theme=text Zsh_prompt=0 Help opt
+  Help=$(cat <<EOF
+usage: $0 [-z] [-t theme]
+       $0 [-h]
+
+OPTIONS:
+  -h  Print Help (this message) and exit
+  -t  Theme
+  -z  Zsh Prompt
+EOF
+)
+  while getopts hzt: opt; do
+    case $opt in
+      z)
+        Zsh_prompt=1
+        ;;
+      t)
+        Theme=$OPTARG
+        ;;
+      h)
+        echo "$Help"
+        return 0
+        ;;
+      ?|:) # invalid option | missing argument
+        echo "$Help"
+        return 1
+        ;;
+    esac
+  done
+
+  local Status='-' NoBattery=0 Ratio i
+  case $(uname) in
+    Darwin)
+      local AppleSmartBattery="$(ioreg -rc AppleSmartBattery)"
+      if [ -n "$AppleSmartBattery" ]; then
+        for i in 'IsCharging' 'FullyCharged' 'CurrentCapacity' 'MaxCapacity'; do
+          local $i="$(echo "$AppleSmartBattery" | grep "$i" | tr -d ' ' | cut -f 2 -d '=')"
+        done
+        Ratio=$(awk "BEGIN { print $CurrentCapacity / $MaxCapacity }")
+        if [ "$IsCharging" = "Yes" ]; then
+          Status='+'
+        elif [ "$FullyCharged" = "Yes" ]; then
+          Status='='
+        fi
+      else
+        NoBattery=1
+      fi
+      ;;
+    Linux)
+      if [ -d /sys/class/power_supply/BAT0/ ]; then
+        for i in 'status' 'energy_now' 'energy_full'; do
+          local battery_$i=$(</sys/class/power_supply/BAT0/$i)
+        done
+        Ratio=$(awk "BEGIN { print $battery_energy_now / $battery_energy_full }")
+        if [ "$battery_status" = "Charging" ]; then
+          Status='+'
+        elif [ "$battery_status" = "Full" ]; then
+          Status='='
+        fi
+      else
+        NoBattery=1
+      fi
+      ;;
+    *)
+      echo "Unsupported OS: $(uname)" >&2
+      return 1
+      ;;
+  esac
+  [ $NoBattery -eq 1 ] && echo "No battery is found." >&2 && return 1
+
+  local Prepend Append
+  case $Theme in
+    text)
+      [ $Zsh_prompt -eq 1 ] && Append='%%' || Append='%'
+      case $Status in
+        -)
+          Prepend='Discharging, '
+          ;;
+        +)
+          Prepend='Charging, '
+          ;;
+        =)
+          Prepend='Full, '
+          ;;
+      esac
+      echo "$Prepend$(printf '%.0f' $(awk "BEGIN { print $Ratio * 100 }"))$Append"
+      ;;
+    bar|block)
+      Ratio=$(printf '%.0f' $(awk "BEGIN { print $Ratio * 10 }"))
+      if [ $Zsh_prompt -eq 1 ]; then
+        if [ $Ratio -le 2 ]; then
+          Prepend='%F{red}'
+        elif [ $Ratio -le 4 ]; then
+          Prepend='%F{yellow}'
+        else
+          Prepend='%F{green}'
+        fi
+        Append='%f'
+      else
+        if [ $Ratio -le 2 ]; then
+          Prepend="\033[0;31m"
+        elif [ $Ratio -le 4 ]; then
+          Prepend="\033[0;33m"
+        else
+          Prepend="\033[0;32m"
+        fi
+        Append="\033[0m"
+      fi
+      case $Theme in
+        bar)
+          local Bar
+          case $Status in
+            -)
+              Bar='◀◀◀◀◀◀◀◀◀◀◁◁◁◁◁◁◁◁◁◁'
+              ;;
+            +)
+              Bar='▶▶▶▶▶▶▶▶▶▶▷▷▷▷▷▷▷▷▷▷'
+              ;;
+            =)
+              Bar='■■■■■■■■■■■■■■■■■■■■'
+              ;;
+          esac
+          echo -e "$Prepend${Bar:$((10 - $Ratio)):10}$Append"
+          ;;
+        block)
+          local Block=' ▁▂▃▄▅▆▇█'
+          echo -e "$Prepend${Block:$(printf '%.0f' $(awk "BEGIN { print $Ratio / 1.25 }")):1}$Append"
+          ;;
+      esac
+      ;;
+    *)
+      echo "Unknown theme: $Theme." >&2
+      ;;
+  esac
+}
+
+battery-indicator "$@"

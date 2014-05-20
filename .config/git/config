@@ -1,0 +1,23 @@
+[advice]
+	pushUpdateRejected = false
+	statusHints = false
+	detachedHead = false
+[branch]
+	autosetupmerge = always
+	autosetuprebase = always
+[core]
+	autocrlf = input
+	excludesfile = ~/.config/git/ignore
+	attributesfile = ~/.config/git/attributes
+[color]
+	ui = true
+[pull]
+	rebase = true
+[push]
+	default = simple
+[rebase]
+	autosquash = true
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true

@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+setopt prompt_subst
+autoload -U battery-indicator
+
+zsh_right_prompt () {
+  RPROMPT=' $(battery-indicator -z -t bar 2>/dev/null) $(date +%H:%M:%S)'
+}
+
+zsh_right_prompt
