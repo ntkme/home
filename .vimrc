@@ -145,7 +145,7 @@
   " }}}
   " Editing {{{
     Plugin 'tpope/vim-abolish'
-    Plugin 'kien/ctrlp.vim'
+    Plugin 'ctrlpvim/ctrlp.vim'
     Plugin 'Lokaltog/vim-easymotion'
     Plugin 'kana/vim-fakeclip'
     nmap <Leader> "+
