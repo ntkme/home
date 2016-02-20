@@ -2,47 +2,12 @@
 
 dircolors () {
   local LS_COLORS attribute color background_color modifier background_modifier
-
+  local ATTRIBUTES='dilnsopiexbdcdsusgtwow'
   [ -n "$LSCOLORS" ] || local LSCOLORS='exfxcxdxbxegedabagacad'
 
   local i
-
   for i in {0..20..2}; do
-    case $i in
-      0)
-        attribute=di
-        ;;
-      2)
-        attribute=ln
-        ;;
-      4)
-        attribute=so
-        ;;
-      6)
-        attribute=pi
-        ;;
-      8)
-        attribute=ex
-        ;;
-      10)
-        attribute=bd
-        ;;
-      12)
-        attribute=cd
-        ;;
-      14)
-        attribute=su
-        ;;
-      16)
-        attribute=sg
-        ;;
-      18)
-        attribute=tw
-        ;;
-      20)
-        attribute=ow
-        ;;
-    esac
+    attribute=${ATTRIBUTES:($i):2}
 
     modifier=$(printf "%d" "'${LSCOLORS:($i):1}")
     if [ "$modifier" -ge 97 ] && [ "$modifier" -le 104 ]; then

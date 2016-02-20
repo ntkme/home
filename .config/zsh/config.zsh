@@ -19,7 +19,7 @@ fi
 
 # Completion
 autoload -U compinit && compinit
-zstyle ':completion:*:default' list-colors $LS_COLORS
+zstyle ':completion:*:default' list-colors "$LS_COLORS"
 zstyle ':completion:*:*:-command-:*' tag-order 'functions:-non-comp *' functions
 zstyle ':completion:*:functions-non-comp' ignored-patterns '_*'
 zstyle ':completion:*:processes' menu yes select
