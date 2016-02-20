@@ -157,6 +157,7 @@
     Plugin 'vim-scripts/ZoomWin'
   " }}}
   " Programming {{{
+    Plugin 'Chiel92/vim-autoformat'
     Plugin 'tpope/vim-commentary'
     Plugin 'Raimondi/delimitMate'
     Plugin 'mattn/emmet-vim'
