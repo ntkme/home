@@ -14,11 +14,14 @@
     set autoread
     set directory=/tmp//
     set swapfile
-    set undodir=~/.vim/undo//
-    set noundofile
     set backupdir=~/.vim/backup//
     set nobackup
     set nowritebackup
+
+    if has('persistent_undo')
+      set undodir=~/.vim/undo//
+      set noundofile
+    endif
   " }}}
   " Searching {{{
     set hlsearch
