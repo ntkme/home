@@ -14,12 +14,12 @@ test -x /opt/local/bin/brew && export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 # Alias
 alias ll='ls -lh'
 alias la='ls -lAh'
-alias grep='command grep --color=auto'
+alias grep='grep --color=auto'
 
 case $(uname) in
   Darwin)
     ;;
   Linux)
-    alias ls='command ls --color=auto'
+    alias ls='ls --color=auto'
     ;;
 esac
