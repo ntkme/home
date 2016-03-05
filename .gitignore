@@ -6,9 +6,10 @@
 !/.*login
 !/.*logout
 !/.config/
+!/.git*
 
+/.gitconfig
 /.htoprc
 /.netrc
 
-!/.gitignore
 !/.tmux.conf

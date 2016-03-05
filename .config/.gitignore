@@ -6,4 +6,4 @@
 !/sh/
 !/zsh/
 
-!/.gitignore
+!/.git*
