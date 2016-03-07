@@ -9,6 +9,7 @@
 !/.git*
 
 /.gitconfig
+/.idlerc/
 /.htoprc
 /.netrc
 
