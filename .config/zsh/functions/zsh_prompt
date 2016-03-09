@@ -24,7 +24,7 @@ _prompt_virtual_env () {
 }
 
 _prompt_indicator () {
-  git rev-parse 2>/dev/null && ! { [ "$(git rev-parse --show-toplevel 2>/dev/null)" = "$HOME" ] && git check-ignore "$PWD" >/dev/null } && echo '±' && return
+  git rev-parse 2>/dev/null && ! { [ "$(git rev-parse --show-toplevel 2>/dev/null)" = "$HOME" ] && git check-ignore --quiet "$PWD" 2>/dev/null } && echo '±' && return
   hg root >/dev/null 2>&1 && echo '☿' && return
   svn info >/dev/null 2>&1 && echo '⚡' && return
   [ "$(uname)" = "Darwin" ] && [ -n "$TERM_PROGRAM" ] && echo '%(!.√.)' || echo '%(!.√.↪)'
