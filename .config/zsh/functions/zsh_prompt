@@ -2,6 +2,10 @@
 
 setopt prompt_subst
 
+_prompt_apple () {
+  [ "$(uname)" = "Darwin" ] && [ -n "$TERM_PROGRAM" ] && echo '%F{white}%f '
+}
+
 _prompt_pwd () {
   echo "${PWD/#$HOME/~}" | sed -e 's-\([^/]\)[^/]*/-\1/-g'
 }
@@ -27,11 +31,11 @@ _prompt_indicator () {
   git rev-parse 2>/dev/null && ! { [ "$(git rev-parse --show-toplevel 2>/dev/null)" = "$HOME" ] && git check-ignore --quiet "$PWD" 2>/dev/null } && echo '±' && return
   hg root >/dev/null 2>&1 && echo '☿' && return
   svn info >/dev/null 2>&1 && echo '⚡' && return
-  [ "$(uname)" = "Darwin" ] && [ -n "$TERM_PROGRAM" ] && echo '%(!.√.)' || echo '%(!.√.↪)'
+  echo '%(!.√.↪)'
 }
 
 zsh_prompt () {
-  PROMPT='%F{yellow}%n%f at %F{magenta}%m%f in %F{blue}${$(_prompt_pwd)//\//"%F{red}/%F{blue}"}%f $(_prompt_git_status)
+  PROMPT='%F{yellow}%n%f at $(_prompt_apple)%F{magenta}%m%f in %F{blue}${$(_prompt_pwd)//\//"%F{red}/%F{blue}"}%f $(_prompt_git_status)
 $(_prompt_virtual_env)$(_prompt_indicator) '
 }
 
