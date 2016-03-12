@@ -1,4 +1,6 @@
 #!/bin/sh
 
-defaults write com.apple.dock ResetLaunchPad -bool true
-killall Dock
+if [ "$(uname)" = "Darwin" ]; then
+  defaults write com.apple.dock ResetLaunchPad -bool true
+  killall Dock
+fi
