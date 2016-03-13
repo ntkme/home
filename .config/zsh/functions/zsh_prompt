@@ -13,13 +13,14 @@ _prompt_pwd () {
 _prompt_git_status () {
   local __git_branch="$(git rev-parse --abbrev-ref HEAD 2>/dev/null)"
   if [ -n "$__git_branch" ]; then
-    echo -n 'on %F{cyan}'$__git_branch'%f'
+    echo -n "on %F{cyan}$__git_branch"
     local __git_toplevel="$(git rev-parse --show-toplevel 2>/dev/null)"
     if [ -n "$__git_toplevel" ]; then
-      [ -n "$(git status --porcelain --untracked-files=no --ignore-submodules=dirty)" ] && echo -n '%F{red}!%f'
-      [ -n "$(git ls-files --other --exclude-standard -- "$__git_toplevel")" ] && echo -n '%F{red}?%f'
+      echo -n '%F{red}'
+      [ -n "$(git status --porcelain --untracked-files=no --ignore-submodules=dirty)" ] && echo -n '!'
+      [ -n "$(git ls-files --other --exclude-standard -- "$__git_toplevel")" ] && echo -n '?'
     fi
-    echo ' '
+    echo '%f '
   fi
 }
 

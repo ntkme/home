@@ -27,7 +27,7 @@ function fish_prompt -d "Write out the prompt"
 
   begin
     which git >/dev/null ^&1; and git rev-parse ^/dev/null; and begin
-      not [ (git rev-parse --show-toplevel ^/dev/null) = "$HOME" ]; or not git check-ignore "$PWD" >/dev/null
+      not [ (git rev-parse --show-toplevel ^/dev/null) = "$HOME" ]; or not git check-ignore --quiet "$PWD" ^/dev/null
     end; and printf '±'
   end; or begin
     which hg >/dev/null ^&1; and hg root >/dev/null ^&1; and printf '☿'
