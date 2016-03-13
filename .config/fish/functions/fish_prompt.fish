@@ -1,6 +1,6 @@
 function fish_prompt -d "Write out the prompt"
   printf '%s%s%s' (set_color yellow) (whoami) (set_color normal)
-  printf ' at %s%s%s' (set_color magenta) (hostname|cut -d . -f 1) (set_color normal)
+  printf ' at %s%s%s%s' ([ (uname) = "Darwin" ]; and test "$TERM_PROGRAM"; and printf '%s%s ' (set_color white) (set_color normal)) (set_color magenta) (hostname|cut -d . -f 1) (set_color normal)
   printf ' in %s%s%s' (set_color $fish_color_cwd) (prompt_pwd | sed "s,/,"(set_color red)"/"(set_color $fish_color_cwd)",g;s/\$/\\\\n/g;\$s/\\\\n//" | tr -d "\n") (set_color normal)
 
   if which git >/dev/null ^&1
@@ -35,8 +35,6 @@ function fish_prompt -d "Write out the prompt"
     which svn >/dev/null ^&1; and svn info >/dev/null ^&1; and printf '⚡'
   end; or begin
     [ (id -u) = 0 ]; and printf '√'
-  end; or begin
-    [ (uname) = "Darwin" ]; and test "$TERM_PROGRAM"; and printf ''
   end; or begin
     printf '↪'
   end
