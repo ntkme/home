@@ -1,3 +1,5 @@
+*~
+
 #  #
 .AppleDouble/
 .DS_Store
@@ -6,8 +8,8 @@
 .Spotlight-V100/
 .TemporaryItems/
 .Trashes/
+.VolumeIcon.icns
 ._*
 .fseventsd/
 .localized
 Icon
-#
