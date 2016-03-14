@@ -34,12 +34,12 @@ EOF
   local Status='-' NoBattery=0 Ratio i
   case $(uname) in
     Darwin)
-      local AppleSmartBattery="$(ioreg -rc AppleSmartBattery)"
+      local AppleSmartBattery=$(ioreg -rc AppleSmartBattery | tr -d '" ' | grep "^MaxCapacity\|^CurrentCapacity\|^FullyCharged\|^IsCharging")
       if [ -n "$AppleSmartBattery" ]; then
-        for i in 'IsCharging' 'FullyCharged' 'CurrentCapacity' 'MaxCapacity'; do
-          local $i="$(echo "$AppleSmartBattery" | grep "$i" | tr -d ' ' | cut -f 2 -d '=')"
+        for i in $AppleSmartBattery; do
+          local "$i"
         done
-        Ratio=$(awk "BEGIN { print $CurrentCapacity / $MaxCapacity }")
+        Ratio="$CurrentCapacity / $MaxCapacity"
         if [ "$IsCharging" = "Yes" ]; then
           Status='+'
         elif [ "$FullyCharged" = "Yes" ]; then
@@ -54,7 +54,7 @@ EOF
         for i in 'status' 'energy_now' 'energy_full'; do
           local battery_$i=$(</sys/class/power_supply/BAT0/$i)
         done
-        Ratio=$(awk "BEGIN { print $battery_energy_now / $battery_energy_full }")
+        Ratio="$battery_energy_now / $battery_energy_full"
         if [ "$battery_status" = "Charging" ]; then
           Status='+'
         elif [ "$battery_status" = "Full" ]; then
