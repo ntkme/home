@@ -35,4 +35,4 @@ bindkey -M vicmd '/' history-incremental-pattern-search-backward
 bindkey -M vicmd '?' history-incremental-pattern-search-forward
 
 # Prompt
-autoload -U zsh_smart_prompt && zsh_smart_prompt
+autoload -U zsh_prompt_float && zsh_prompt_float

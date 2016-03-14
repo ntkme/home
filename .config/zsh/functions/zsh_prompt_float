@@ -2,7 +2,7 @@
 
 autoload -U add-zsh-hook zsh_prompt zsh_right_prompt
 
-_prompt___precmd () {
+_prompt_float_precmd () {
   zsh_prompt
   zsh_right_prompt
   local zero='%([BSUbfksu]|[FB]{*})'
@@ -18,9 +18,9 @@ _prompt___precmd () {
   fi
 }
 
-zsh_smart_prompt () {
+zsh_prompt_float () {
   add-zsh-hook -D precmd "prompt_*_precmd"
-  add-zsh-hook precmd _prompt___precmd
+  add-zsh-hook precmd _prompt_float_precmd
 }
 
-zsh_smart_prompt
+zsh_prompt_float
