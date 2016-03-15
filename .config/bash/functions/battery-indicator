@@ -126,8 +126,8 @@ EOF
           echo -e "$Prepend${Bar:$((10 - $Ratio)):10}$Append"
           ;;
         block)
-          local Block=' ▁▂▃▄▅▆▇█'
-          echo -e "$Prepend${Block:$(printf '%.0f' $(awk "BEGIN { print $Ratio / 1.25 }")):1}$Append"
+          local Block='▁▁▁▂▂▃▄▅▆▇█'
+          echo -e "$Prepend${Block:$Ratio:1}$Append"
           ;;
       esac
       ;;
