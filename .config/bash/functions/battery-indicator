@@ -36,9 +36,9 @@ EOF
     Darwin)
       local AppleSmartBattery=$(ioreg -rc AppleSmartBattery | tr -d '" ' | grep "^MaxCapacity\|^CurrentCapacity\|^FullyCharged\|^IsCharging")
       if [ -n "$AppleSmartBattery" ]; then
-        for i in $AppleSmartBattery; do
+        while read i; do
           local "$i"
-        done
+        done <<< "$AppleSmartBattery"
         Ratio="$CurrentCapacity / $MaxCapacity"
         if [ "$IsCharging" = "Yes" ]; then
           Status='+'
