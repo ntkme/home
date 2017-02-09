@@ -145,6 +145,7 @@
     Plugin 'vim-ruby/vim-ruby'
     Plugin 'wavded/vim-stylus'
     Plugin 'timcharper/textile.vim'
+    Plugin 'posva/vim-vue'
   " }}}
   " Editing {{{
     Plugin 'tpope/vim-abolish'
