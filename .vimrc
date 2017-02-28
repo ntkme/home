@@ -95,105 +95,103 @@
   endif
 " }}}
 
-" Vundle Install {{{
-  if !isdirectory(expand('$HOME/.vim/bundle/Vundle.vim/.git', 1))
-    silent ! git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+" Plug Install {{{
+  if empty(glob('~/.vim/autoload/plug.vim'))
+    silent ! curl -fsSLo ~/.vim/autoload/plug.vim --create-dirs
+      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim 2>&1
     if v:shell_error
       finish
     else
-      silent ! vim +PluginInstall +qall
+      autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
     endif
   endif
 " }}}
 
-" Vundle {{{
-  filetype off
-  set rtp+=~/.vim/bundle/Vundle.vim/
-  call vundle#begin()
-  Plugin 'VundleVim/Vundle.vim'
+" Plug {{{
+  call plug#begin('~/.vim/plugged')
   " Colorschemes {{{
-    Plugin 'chriskempson/base16-vim'
-    Plugin 'larssmit/vim-getafe'
-    Plugin 'ciaranm/inkpot'
-    Plugin 'twerth/ir_black'
-    Plugin 'nelstrom/vim-mac-classic-theme'
-    Plugin 'tomasr/molokai'
+    Plug 'chriskempson/base16-vim', { 'on': [] }
+    Plug 'larssmit/vim-getafe', { 'on': [] }
+    Plug 'ciaranm/inkpot', { 'on': [] }
+    Plug 'twerth/ir_black', { 'on': [] }
+    Plug 'nelstrom/vim-mac-classic-theme'
+    Plug 'tomasr/molokai'
     let g:molokai_original = 0
     let g:rehash256 = 1
 
-    Plugin 'altercation/vim-colors-solarized'
+    Plug 'altercation/vim-colors-solarized', { 'on': [] }
     let g:solarized_termcolors = &t_Co
 
-    Plugin 'jnurmine/Zenburn'
+    Plug 'jnurmine/Zenburn', { 'on': [] }
   " }}}
   " Syntax {{{
-    Plugin 'kchmck/vim-coffee-script'
-    Plugin 'hail2u/vim-css3-syntax'
-    Plugin 'ap/vim-css-color'
-    Plugin 'Soares/fish.vim'
-    Plugin 'tpope/vim-git'
-    Plugin 'tpope/vim-haml'
-    Plugin 'wlangstroth/vim-haskell'
-    Plugin 'digitaltoad/vim-jade'
-    Plugin 'pangloss/vim-javascript'
-    Plugin 'leshill/vim-json'
-    Plugin 'groenewege/vim-less'
-    Plugin 'tpope/vim-liquid'
-    Plugin 'tpope/vim-markdown'
-    Plugin 'mmalecki/vim-node.js'
-    Plugin 'tpope/vim-rails'
-    Plugin 'vim-ruby/vim-ruby'
-    Plugin 'wavded/vim-stylus'
-    Plugin 'timcharper/textile.vim'
-    Plugin 'posva/vim-vue'
+    Plug 'kchmck/vim-coffee-script'
+    Plug 'JulesWang/css.vim'
+    Plug 'ap/vim-css-color'
+    Plug 'Soares/fish.vim'
+    Plug 'tpope/vim-git'
+    Plug 'othree/html5.vim'
+    Plug 'pangloss/vim-javascript'
+    Plug 'groenewege/vim-less'
+    Plug 'tpope/vim-liquid'
+    Plug 'tpope/vim-markdown'
+    Plug 'vim-ruby/vim-ruby'
+    Plug 'wavded/vim-stylus'
+    Plug 'timcharper/textile.vim'
+    Plug 'posva/vim-vue'
   " }}}
   " Editing {{{
-    Plugin 'tpope/vim-abolish'
-    Plugin 'ctrlpvim/ctrlp.vim'
-    Plugin 'Lokaltog/vim-easymotion'
-    Plugin 'kana/vim-fakeclip'
+    Plug 'tpope/vim-abolish'
+    Plug 'ctrlpvim/ctrlp.vim'
+    Plug 'Lokaltog/vim-easymotion'
+    Plug 'kana/vim-fakeclip'
     nmap <Leader> "+
     vmap <Leader> "+
 
-    Plugin 'vim-scripts/lastpos.vim'
-    Plugin 'tpope/vim-repeat'
-    Plugin 'sjl/gundo.vim'
-    Plugin 'vim-scripts/ZoomWin'
+    Plug 'vim-scripts/lastpos.vim'
+    Plug 'tpope/vim-repeat'
+    Plug 'sjl/gundo.vim'
+    Plug 'vim-scripts/ZoomWin'
   " }}}
   " Programming {{{
-    Plugin 'Chiel92/vim-autoformat'
-    Plugin 'tpope/vim-commentary'
-    Plugin 'Raimondi/delimitMate'
-    Plugin 'mattn/emmet-vim'
-    Plugin 'tpope/vim-endwise'
-    Plugin 'tpope/vim-fugitive'
-    Plugin 'airblade/vim-gitgutter'
+    Plug 'Chiel92/vim-autoformat'
+    Plug 'tpope/vim-commentary'
+    Plug 'Raimondi/delimitMate'
+    Plug 'mattn/emmet-vim'
+    Plug 'tpope/vim-endwise'
+    Plug 'tpope/vim-fugitive'
+    Plug 'airblade/vim-gitgutter'
     let g:gitgutter_enabled = 0
     let g:gitgutter_on_bufenter = 0
 
-    Plugin 'gregsexton/gitv'
-    Plugin 'nathanaelkane/vim-indent-guides'
+    Plug 'gregsexton/gitv'
+    Plug 'nathanaelkane/vim-indent-guides'
     let g:indent_guides_guide_size = 1
 
-    Plugin 'michaeljsmith/vim-indent-object'
+    Plug 'michaeljsmith/vim-indent-object'
     runtime macros/matchit.vim
-    Plugin 'terryma/vim-multiple-cursors'
-    Plugin 'scrooloose/nerdcommenter'
-    Plugin 'scrooloose/nerdtree'
-    Plugin 'chrisbra/NrrwRgn'
-    Plugin 'tpope/vim-scriptease'
-    Plugin 'AndrewRadev/splitjoin.vim'
-    Plugin 'Valloric/YouCompleteMe'
-    Plugin 'scrooloose/syntastic'
-    Plugin 'godlygeek/tabular'
-    Plugin 'bronson/vim-trailing-whitespace'
-    Plugin 'tpope/vim-unimpaired'
+    Plug 'terryma/vim-multiple-cursors'
+    Plug 'scrooloose/nerdcommenter'
+    Plug 'scrooloose/nerdtree'
+    Plug 'moll/vim-node', { 'for': 'javascript' }
+    Plug 'chrisbra/NrrwRgn'
+    Plug 'tpope/vim-rails', { 'for': 'ruby' }
+    Plug 'tpope/vim-scriptease'
+    Plug 'AndrewRadev/splitjoin.vim'
+    Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --tern-completer' }
+    Plug 'scrooloose/syntastic'
+    Plug 'godlygeek/tabular'
+    Plug 'bronson/vim-trailing-whitespace'
+    Plug 'tpope/vim-unimpaired'
   " }}}
   " User interface {{{
-    Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+    Plug 'powerline/powerline', { 'rtp': 'powerline/bindings/vim/' }
   " }}}
-  call vundle#end()
-  filetype plugin indent on
+  " Writing {{{
+    Plug 'junegunn/goyo.vim'
+    Plug 'junegunn/limelight.vim'
+  " }}}
+  call plug#end()
 " }}}
 
 " Colorscheme {{{
