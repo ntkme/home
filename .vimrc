@@ -148,12 +148,13 @@
     nmap <Leader> "+
     vmap <Leader> "+
 
-    Plug 'vim-scripts/lastpos.vim'
+    Plug 'farmergreg/vim-lastplace'
     Plug 'tpope/vim-repeat'
     Plug 'sjl/gundo.vim'
     Plug 'vim-scripts/ZoomWin'
   " }}}
   " Programming {{{
+    Plug 'w0rp/ale'
     Plug 'Chiel92/vim-autoformat'
     Plug 'tpope/vim-commentary'
     Plug 'Raimondi/delimitMate'
@@ -161,9 +162,6 @@
     Plug 'mattn/emmet-vim'
     Plug 'tpope/vim-endwise'
     Plug 'tpope/vim-fugitive'
-    Plug 'airblade/vim-gitgutter'
-    let g:gitgutter_enabled = 0
-    let g:gitgutter_on_bufenter = 0
 
     Plug 'gregsexton/gitv'
     Plug 'nathanaelkane/vim-indent-guides'
@@ -178,14 +176,17 @@
     Plug 'chrisbra/NrrwRgn'
     Plug 'tpope/vim-rails', { 'for': 'ruby' }
     Plug 'tpope/vim-scriptease'
+    Plug 'mhinz/vim-signify'
+    let g:signify_disable_by_default = 1
+
     Plug 'AndrewRadev/splitjoin.vim'
-    Plug 'ervandew/supertab'
     Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --tern-completer' }
-    Plug 'scrooloose/syntastic'
     Plug 'bronson/vim-trailing-whitespace'
     Plug 'tpope/vim-unimpaired'
   " }}}
   " User interface {{{
+    Plug 'junegunn/fzf', { 'do': './install --bin' }
+    Plug 'junegunn/fzf.vim'
     Plug 'powerline/powerline', { 'rtp': 'powerline/bindings/vim/' }
   " }}}
   " Writing {{{
