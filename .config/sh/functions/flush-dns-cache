@@ -2,9 +2,9 @@
 
 case $(uname) in
   Darwin)
-    command -v mDNSResponder >/dev/null && sudo killall -HUP mDNSResponder
-    command -v discoveryutil >/dev/null && sudo discoveryutil mdnsflushcache
-    command -v dscacheutil >/dev/null && sudo dscacheutil -flushcache
+    command -v mDNSResponder &>/dev/null && sudo killall -HUP mDNSResponder
+    command -v discoveryutil &>/dev/null && sudo discoveryutil mdnsflushcache
+    command -v dscacheutil &>/dev/null && sudo dscacheutil -flushcache
     ;;
   *)
     echo "Unsupported OS: $(uname)" >&2

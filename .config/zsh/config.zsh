@@ -13,7 +13,7 @@ setopt auto_list auto_menu
 unsetopt autocd beep extendedglob notify
 
 if [ -z "$LS_COLORS" ]; then
-  [ -n "$(command -v dircolors)" ] || autoload -U dircolors # LS_COLORS for Non-GNU system
+  command -v dircolors &>/dev/null || autoload -U dircolors # LS_COLORS for Non-GNU system
   eval $(dircolors -b)
 fi
 
@@ -36,3 +36,9 @@ bindkey -M vicmd '?' history-incremental-pattern-search-forward
 
 # Prompt
 autoload -U zsh_prompt_float && zsh_prompt_float
+
+# fzf
+if command -v fzf &>/dev/null && test -d /usr/local/opt/fzf/shell; then
+  [[ $- == *i* ]] && . /usr/local/opt/fzf/shell/completion.zsh 2>/dev/null
+  . /usr/local/opt/fzf/shell/key-bindings.zsh
+fi
