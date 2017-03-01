@@ -157,6 +157,7 @@
     Plug 'Chiel92/vim-autoformat'
     Plug 'tpope/vim-commentary'
     Plug 'Raimondi/delimitMate'
+    Plug 'junegunn/vim-easy-align'
     Plug 'mattn/emmet-vim'
     Plug 'tpope/vim-endwise'
     Plug 'tpope/vim-fugitive'
@@ -181,7 +182,6 @@
     Plug 'ervandew/supertab'
     Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --tern-completer' }
     Plug 'scrooloose/syntastic'
-    Plug 'godlygeek/tabular'
     Plug 'bronson/vim-trailing-whitespace'
     Plug 'tpope/vim-unimpaired'
   " }}}
