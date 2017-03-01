@@ -178,6 +178,7 @@
     Plug 'tpope/vim-rails', { 'for': 'ruby' }
     Plug 'tpope/vim-scriptease'
     Plug 'AndrewRadev/splitjoin.vim'
+    Plug 'ervandew/supertab'
     Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --tern-completer' }
     Plug 'scrooloose/syntastic'
     Plug 'godlygeek/tabular'
