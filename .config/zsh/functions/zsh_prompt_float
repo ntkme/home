@@ -6,15 +6,20 @@ _prompt_float_precmd () {
   zsh_prompt
   zsh_right_prompt
   local zero='%([BSUbfksu]|[FB]{*})'
-  local left_colno=${(m)#${(f)"${(%)${(S)${(e)PROMPT}//$~zero/}}"}[1]}
-  local right_colno=${(m)#${"${(%)${(S)${(e)RPROMPT}//$~zero/}}"}}
-  if [ $((left_colno % COLUMNS + right_colno + 1)) -lt $COLUMNS ]; then
-    local colno=$((COLUMNS - (left_colno + right_colno + 1) % COLUMNS))
+  local e_prompt=${(e)PROMPT}
+  local prompt_colno=${(m)#${(f)"${(%)${(S)${e_prompt}//$~zero/}}"}[1]}
+  local e_rprompt=${(e)RPROMPT}
+  local rprompt_colno=${(m)#${"${(%)${(S)${e_rprompt}//$~zero/}}"}}
+  if [ $((prompt_colno % COLUMNS + rprompt_colno + 1)) -lt $COLUMNS ]; then
+    local colno=$((COLUMNS - (prompt_colno + rprompt_colno + 1) % COLUMNS))
     local -a prompt_lines
-    prompt_lines=(${(f)PROMPT})
-    prompt_lines[1]=$prompt_lines[1]${(l:colno:: :)}$RPROMPT
+    prompt_lines=(${(f)e_prompt})
+    prompt_lines[1]=$prompt_lines[1]${(l:colno:: :)}$e_rprompt
     PROMPT=${(F)prompt_lines}
     RPROMPT=
+  else
+    PROMPT=$e_prompt
+    RPROMPT=$e_rprompt
   fi
 }
 
