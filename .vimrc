@@ -181,7 +181,7 @@
 
     Plug 'AndrewRadev/splitjoin.vim'
     Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --tern-completer' }
-    Plug 'bronson/vim-trailing-whitespace'
+    Plug 'ntpeters/vim-better-whitespace'
     Plug 'tpope/vim-unimpaired'
   " }}}
   " User interface {{{
