@@ -6,9 +6,9 @@ _prompt_float_precmd () {
   zsh_prompt
   zsh_right_prompt
   local zero='%([BSUbfksu]|[FB]{*})'
-  local e_prompt=${(e)PROMPT}
+  local e_prompt="${(e)PROMPT}"
   local prompt_colno=${(m)#${(f)"${(%)${(S)${e_prompt}//$~zero/}}"}[1]}
-  local e_rprompt=${(e)RPROMPT}
+  local e_rprompt="${(e)RPROMPT}"
   local rprompt_colno=${(m)#${"${(%)${(S)${e_rprompt}//$~zero/}}"}}
   if [ $((prompt_colno % COLUMNS + rprompt_colno + 1)) -lt $COLUMNS ]; then
     local colno=$((COLUMNS - (prompt_colno + rprompt_colno + 1) % COLUMNS))
