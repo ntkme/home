@@ -26,19 +26,36 @@ zstyle ':completion:*:processes' menu yes select
 zstyle ':completion:*:processes' force-list always
 zstyle ':completion:*:processes' list-colors "=(#b) #([0-9]#)*=36=31"
 
-# Editing
-bindkey -v
-autoload -U edit-command-line
-zle -N edit-command-line
-bindkey -M vicmd '\e' edit-command-line
-bindkey -M vicmd '/' history-incremental-pattern-search-backward
-bindkey -M vicmd '?' history-incremental-pattern-search-forward
-
 # Prompt
 autoload -U zsh_prompt_float && zsh_prompt_float
+
+# Edit Command Line
+autoload -U edit-command-line
+zle -N edit-command-line
 
 # fzf
 if command -v fzf &>/dev/null && test -d /usr/local/opt/fzf/shell; then
   [[ $- == *i* ]] && . /usr/local/opt/fzf/shell/completion.zsh 2>/dev/null
   . /usr/local/opt/fzf/shell/key-bindings.zsh
 fi
+
+# Key Bindings
+bindkey -v
+
+bindkey '\e\e' edit-command-line
+
+if type fzf-history-widget &>/dev/null; then
+  bindkey '\e/' fzf-history-widget
+  bindkey '\e?' fzf-history-widget
+  bindkey -M vicmd '/' fzf-history-widget
+  bindkey -M vicmd '?' fzf-history-widget
+else
+  bindkey '^R' history-incremental-pattern-search-backward
+  bindkey '\e/' history-incremental-pattern-search-backward
+  bindkey '\e?' history-incremental-pattern-search-forward
+  bindkey -M vicmd '/' history-incremental-pattern-search-backward
+  bindkey -M vicmd '?' history-incremental-pattern-search-forward
+fi
+
+bindkey '^?' vi-backward-delete-char
+bindkey '^H' vi-backward-delete-char
