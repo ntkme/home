@@ -34,10 +34,20 @@ autoload -U edit-command-line
 zle -N edit-command-line
 
 # fzf
-if command -v fzf &>/dev/null && test -d /usr/local/opt/fzf/shell; then
-  [[ $- == *i* ]] && . /usr/local/opt/fzf/shell/completion.zsh 2>/dev/null
-  . /usr/local/opt/fzf/shell/key-bindings.zsh
-fi
+function {
+  [ $? -ne 0 ] && return 1
+
+  [[ $- == *i* ]] && . "$1/shell/completion.zsh"
+  . "$1/shell/key-bindings.zsh"
+} "$(function {
+    [ $? -ne 0 ] && return 1
+
+    while cd "$(dirname "$1")" || return 1 && set "$(basename "$1")" && test -L "$1"; do
+      set "$(readlink "$1")" || return 1
+    done
+
+    cd .. && pwd -P
+  } "$(command -v fzf)")"
 
 # Key Bindings
 bindkey -v
