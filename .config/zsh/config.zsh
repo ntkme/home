@@ -52,6 +52,9 @@ function {
 # Key Bindings
 bindkey -v
 bindkey -r '\e,'
+bindkey '^H' backward-delete-char
+bindkey '^?' backward-delete-char
+
 bindkey '\e\e' edit-command-line
 bindkey -a '\e\e' edit-command-line
 
@@ -67,6 +70,3 @@ else
   bindkey -a '/' history-incremental-pattern-search-backward
   bindkey -a '?' history-incremental-pattern-search-forward
 fi
-
-bindkey '^?' vi-backward-delete-char
-bindkey '^H' vi-backward-delete-char
