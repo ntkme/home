@@ -188,7 +188,7 @@
   " User interface {{{
     Plug 'junegunn/fzf', { 'do': './install --bin' }
     Plug 'junegunn/fzf.vim'
-    map <C-P> :FZF<CR>
+    noremap <C-P> :FZF<CR>
 
     Plug 'scrooloose/nerdtree'
     Plug 'powerline/powerline', { 'rtp': 'powerline/bindings/vim/' }
@@ -210,5 +210,5 @@
 " }}}
 
 " Key Mapping {{{
-  cmap w!! w !sudo tee >/dev/null %
+  cnoremap w!! w !sudo tee >/dev/null %
 " }}}
