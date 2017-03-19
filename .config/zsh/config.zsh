@@ -51,20 +51,21 @@ function {
 
 # Key Bindings
 bindkey -v
-
+bindkey -r '\e,'
 bindkey '\e\e' edit-command-line
+bindkey -a '\e\e' edit-command-line
 
 if type fzf-history-widget &>/dev/null; then
   bindkey '\e/' fzf-history-widget
   bindkey '\e?' fzf-history-widget
-  bindkey -M vicmd '/' fzf-history-widget
-  bindkey -M vicmd '?' fzf-history-widget
+  bindkey -a '/' fzf-history-widget
+  bindkey -a '?' fzf-history-widget
 else
   bindkey '^R' history-incremental-pattern-search-backward
   bindkey '\e/' history-incremental-pattern-search-backward
   bindkey '\e?' history-incremental-pattern-search-forward
-  bindkey -M vicmd '/' history-incremental-pattern-search-backward
-  bindkey -M vicmd '?' history-incremental-pattern-search-forward
+  bindkey -a '/' history-incremental-pattern-search-backward
+  bindkey -a '?' history-incremental-pattern-search-forward
 fi
 
 bindkey '^?' vi-backward-delete-char
