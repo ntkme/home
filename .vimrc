@@ -3,6 +3,7 @@
     set nocompatible
     set encoding=utf-8
     set history=1000
+    set tabpagemax=50
   " }}}
   " Mapleader {{{
     let mapleader = ','
@@ -22,6 +23,10 @@
       set undodir=~/.vim/undo//
       set noundofile
     endif
+
+    if !empty(&viminfo)
+      set viminfo^=!
+    endif
   " }}}
   " Searching {{{
     set hlsearch
@@ -29,8 +34,11 @@
     set ignorecase
     set smartcase
   " }}}
-  " Text Formatting {{{
-    set wrap
+  " Text Editing {{{
+    set autoindent
+    set smartindent
+
+    set backspace=2
 
     set tabstop=2
     set softtabstop=2
@@ -39,12 +47,19 @@
     set expandtab
     set smarttab
 
-    set backspace=2
+    set complete-=i
 
-    set autoindent
-    set smartindent
+    set nrformats-=octal
+
+    set wrap
 
     set virtualedit=block
+
+    if v:version > 703 || v:version == 703 && has("patch541")
+      set formatoptions+=j
+    endif
+
+    set sessionoptions-=options
   " }}}
   " Matching {{{
     set showmatch
@@ -86,11 +101,20 @@
     set novisualbell
     set noerrorbells
     set visualbell t_vb=
+
+    set scrolloff=1
+    set sidescrolloff=5
+    set display=lastline
+
+    set ttimeout
+    set ttimeoutlen=100
+
+    set listchars=eol:¬,tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
   " }}}
 " }}}
 
 " Shell {{{
-  if &shell =~ '/bin/fish$'
+  if &shell =~ '/fish$' && (v:version < 704 || v:version == 704 && !has('patch276'))
     set shell=/bin/bash
   endif
 " }}}
@@ -214,4 +238,10 @@
 
 " Key Mapping {{{
   cnoremap w!! w !sudo tee >/dev/null %
+
+  inoremap <C-U> <C-G>u<C-U>
+
+  if maparg('<C-L>', 'n') ==# ''
+    nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+  endif
 " }}}
