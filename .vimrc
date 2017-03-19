@@ -144,14 +144,11 @@
     Plug 'tpope/vim-abolish'
     Plug 'sjl/gundo.vim'
     Plug 'kana/vim-fakeclip'
-    nmap <Leader> "+
-    vmap <Leader> "+
-
     Plug 'farmergreg/vim-lastplace'
     Plug 'chrisbra/NrrwRgn'
     Plug 'tpope/vim-repeat'
     Plug 'justinmk/vim-sneak'
-    let g:sneak#streak = 1
+    let g:sneak#label = 1
   " }}}
   " Programming {{{
     Plug 'w0rp/ale'
@@ -162,7 +159,6 @@
     Plug 'mattn/emmet-vim'
     Plug 'tpope/vim-endwise'
     Plug 'tpope/vim-fugitive'
-
     Plug 'gregsexton/gitv'
     Plug 'nathanaelkane/vim-indent-guides'
     let g:indent_guides_guide_size = 1
