@@ -179,9 +179,12 @@
     Plug 'tpope/vim-unimpaired'
   " }}}
   " Search & Replace {{{
+    Plug 'haya14busa/incsearch.vim'
+    map / <Plug>(incsearch-forward)
+    map ? <Plug>(incsearch-backward)
+    map g/ <Plug>(incsearch-stay)
+
     Plug 'osyo-manga/vim-over'
-    noremap <silent> / :OverCommandLine /<CR>
-    noremap <silent> ? :OverCommandLine ?<CR>
     cnoreabbrev <silent> %s OverCommandLine %s<CR>
     cnoreabbrev <silent> '<,'>s OverCommandLine '<,'>s<CR>
   " }}}
