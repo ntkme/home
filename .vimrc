@@ -142,16 +142,16 @@
   " }}}
   " Editing {{{
     Plug 'tpope/vim-abolish'
-    Plug 'ctrlpvim/ctrlp.vim'
-    Plug 'Lokaltog/vim-easymotion'
+    Plug 'sjl/gundo.vim'
     Plug 'kana/vim-fakeclip'
     nmap <Leader> "+
     vmap <Leader> "+
 
     Plug 'farmergreg/vim-lastplace'
+    Plug 'chrisbra/NrrwRgn'
     Plug 'tpope/vim-repeat'
-    Plug 'sjl/gundo.vim'
-    Plug 'vim-scripts/ZoomWin'
+    Plug 'justinmk/vim-sneak'
+    let g:sneak#streak = 1
   " }}}
   " Programming {{{
     Plug 'w0rp/ale'
@@ -171,9 +171,7 @@
     runtime macros/matchit.vim
     Plug 'terryma/vim-multiple-cursors'
     Plug 'scrooloose/nerdcommenter'
-    Plug 'scrooloose/nerdtree'
     Plug 'moll/vim-node', { 'for': 'javascript' }
-    Plug 'chrisbra/NrrwRgn'
     Plug 'tpope/vim-rails', { 'for': 'ruby' }
     Plug 'tpope/vim-scriptease'
     Plug 'mhinz/vim-signify'
@@ -184,10 +182,21 @@
     Plug 'ntpeters/vim-better-whitespace'
     Plug 'tpope/vim-unimpaired'
   " }}}
+  " Search & Replace {{{
+    Plug 'osyo-manga/vim-over'
+    noremap <silent> / :OverCommandLine /<CR>
+    noremap <silent> ? :OverCommandLine ?<CR>
+    cnoreabbrev <silent> %s OverCommandLine %s<CR>
+    cnoreabbrev <silent> '<,'>s OverCommandLine '<,'>s<CR>
+  " }}}
   " User interface {{{
     Plug 'junegunn/fzf', { 'do': './install --bin' }
     Plug 'junegunn/fzf.vim'
+    map <C-P> :FZF<CR>
+
+    Plug 'scrooloose/nerdtree'
     Plug 'powerline/powerline', { 'rtp': 'powerline/bindings/vim/' }
+    Plug 'vim-scripts/ZoomWin'
   " }}}
   " Writing {{{
     Plug 'junegunn/goyo.vim'
