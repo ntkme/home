@@ -152,7 +152,7 @@
     Plug 'kchmck/vim-coffee-script'
     Plug 'JulesWang/css.vim'
     Plug 'ap/vim-css-color'
-    Plug 'Soares/fish.vim'
+    Plug 'dag/vim-fish'
     Plug 'tpope/vim-git'
     Plug 'othree/html5.vim'
     Plug 'pangloss/vim-javascript'
@@ -162,6 +162,7 @@
     Plug 'vim-ruby/vim-ruby'
     Plug 'wavded/vim-stylus'
     Plug 'timcharper/textile.vim'
+    Plug 'tmux-plugins/vim-tmux'
     Plug 'posva/vim-vue'
   " }}}
   " Editing {{{
