@@ -69,6 +69,11 @@
     set foldenable
     set foldlevelstart=99
   " }}}
+  " Tags {{{
+    if has('path_extra')
+      setglobal tags-=./tags tags-=./tags; tags^=./tags;
+    endif
+  " }}}
   " User interface {{{
     set title
 
