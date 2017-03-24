@@ -42,8 +42,8 @@ function {
 } "$(function {
     [ $? -ne 0 ] && return 1
 
-    while cd "$(dirname "$1")" || return 1 && set "$(basename "$1")" && test -L "$1"; do
-      set "$(readlink "$1")" || return 1
+    while cd "$(dirname "$1")" && set "$(basename "$1")" && test -L "$1"; do
+      set "$(readlink "$1")"
     done
 
     cd .. && pwd -P
