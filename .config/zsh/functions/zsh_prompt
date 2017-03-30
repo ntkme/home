@@ -7,7 +7,7 @@ _prompt_apple () {
 }
 
 _prompt_pwd () {
-  echo "${PWD/#$HOME/~}" | sed -e 's-\([^/]\)[^/]*/-\1/-g'
+  echo "${PWD/#$HOME/~}" | sed -e 's-\(\.*[^/]\)[^/]*/-\1/-g'
 }
 
 _prompt_git_status () {
