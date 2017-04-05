@@ -178,6 +178,18 @@
     Plug 'farmergreg/vim-lastplace'
     Plug 'chrisbra/NrrwRgn'
     Plug 'tpope/vim-repeat'
+    Plug 't9md/vim-textmanip'
+    xmap <Space>d <Plug>(textmanip-duplicate-down)
+    nmap <Space>d <Plug>(textmanip-duplicate-down)
+    xmap <Space>D <Plug>(textmanip-duplicate-up)
+    nmap <Space>D <Plug>(textmanip-duplicate-up)
+    xmap <C-j> <Plug>(textmanip-move-down)
+    xmap <C-k> <Plug>(textmanip-move-up)
+    xmap <C-h> <Plug>(textmanip-move-left)
+    xmap <C-l> <Plug>(textmanip-move-right)
+    nmap <F10> <Plug>(textmanip-toggle-mode)
+    xmap <F10> <Plug>(textmanip-toggle-mode)
+
     Plug 'justinmk/vim-sneak'
     let g:sneak#label = 1
   " }}}
@@ -220,6 +232,10 @@
     cnoreabbrev <silent> '<,'>s OverCommandLine '<,'>s<CR>
   " }}}
   " User interface {{{
+    Plug 't9md/vim-choosewin'
+    nmap - <Plug>(choosewin)
+    let g:choosewin_overlay_enable = 1
+
     Plug 'junegunn/fzf', { 'do': './install --bin' }
     Plug 'junegunn/fzf.vim'
     noremap <C-P> :FZF<CR>
