@@ -191,7 +191,6 @@
     xmap <F10> <Plug>(textmanip-toggle-mode)
 
     Plug 'justinmk/vim-sneak'
-    let g:sneak#label = 1
   " }}}
   " Programming {{{
     Plug 'w0rp/ale'
