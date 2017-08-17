@@ -10,7 +10,9 @@
 
 /.gitconfig
 /.idlerc/
+/.dmrc
 /.htoprc
+/.k5login
 /.netrc
 
 !/.tmux.conf
