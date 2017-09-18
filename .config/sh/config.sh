@@ -8,8 +8,12 @@
 # Prepend /usr/local/bin for Homebrew
 test -x /usr/local/bin/brew && export PATH=/usr/local/bin:`echo ":$PATH:" | sed -e "s:\:/usr/local/bin\::\::g" -e "s/^://" -e "s/:$//"`
 
-# Prepend /opt/local/bin for Linuxbrew
-test -x /opt/local/bin/brew && export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+# Prepend /home/linuxbrew/.linuxbrew/bin for Linuxbrew
+if test -x /home/linuxbrew/.linuxbrew/bin/brew; then
+  export PATH=/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:`echo ":$PATH:" | sed -e "s:\:/home/linuxbrew/.linuxbrew/bin\::\::g" -e "s:\:/home/linuxbrew/.linuxbrew/sbin\::\::g" -e "s/^://" -e "s/:$//"`
+  export MANPATH=/home/linuxbrew/.linuxbrew/share/man:$MANPATH
+  export INFOPATH=/home/linuxbrew/.linuxbrew/share/info:$INFOPATH
+fi
 
 # Alias
 alias ll='ls -lh'
