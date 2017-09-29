@@ -75,7 +75,10 @@
     endif
   " }}}
   " User interface {{{
-    set title
+    if has('title')
+      set title
+      set titleold=
+    endif
 
     if has('gui_running')
       set background=light
