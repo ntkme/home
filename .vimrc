@@ -55,7 +55,7 @@
 
     set virtualedit=block
 
-    if v:version > 703 || v:version == 703 && has("patch541")
+    if v:version > 703 || v:version == 703 && has('patch541')
       set formatoptions+=j
     endif
 
@@ -86,8 +86,8 @@
       set background=dark
     endif
 
-    if &t_Co > 2 || has('gui_running')
-      syntax on
+    if &t_Co > 2 || has('gui_running') && !exists('g:syntax_on')
+      syntax enable
     endif
 
     if has('gui_running') && has('mouse')
