@@ -14,5 +14,6 @@
 /.htoprc
 /.k5login
 /.netrc
+/.npmrc
 
 !/.tmux.conf
