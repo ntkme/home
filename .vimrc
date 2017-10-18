@@ -47,6 +47,10 @@
     set expandtab
     set smarttab
 
+    if v:version > 704 || v:version == 704 && has('patch785')
+      set nofixendofline
+    endif
+
     set complete-=i
 
     set nrformats-=octal
