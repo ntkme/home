@@ -201,9 +201,9 @@
   " }}}
   " Programming {{{
     Plug 'w0rp/ale'
+    Plug 'jiangmiao/auto-pairs'
     Plug 'Chiel92/vim-autoformat'
     Plug 'tpope/vim-commentary'
-    Plug 'Raimondi/delimitMate'
     Plug 'junegunn/vim-easy-align'
     Plug 'mattn/emmet-vim'
     Plug 'tpope/vim-endwise'
