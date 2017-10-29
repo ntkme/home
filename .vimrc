@@ -228,10 +228,13 @@
     Plug 'tpope/vim-unimpaired'
   " }}}
   " Search & Replace {{{
-    Plug 'haya14busa/incsearch.vim'
-    map / <Plug>(incsearch-forward)
-    map ? <Plug>(incsearch-backward)
-    map g/ <Plug>(incsearch-stay)
+    if v:version < 800 || v:version == 800 && !has('patch1238')
+      Plug 'haya14busa/incsearch.vim'
+      map / <Plug>(incsearch-forward)
+      map ? <Plug>(incsearch-backward)
+    else
+      Plug 'haya14busa/incsearch.vim', { 'on': []  }
+    endif
 
     Plug 'osyo-manga/vim-over'
     cnoreabbrev <silent> %s OverCommandLine %s<CR>
