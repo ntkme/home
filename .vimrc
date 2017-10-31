@@ -236,6 +236,8 @@
       Plug 'haya14busa/incsearch.vim', { 'on': []  }
     endif
 
+    Plug 'osyo-manga/vim-anzu'
+
     Plug 'osyo-manga/vim-over'
     cnoreabbrev <silent> %s OverCommandLine %s<CR>
     cnoreabbrev <silent> '<,'>s OverCommandLine '<,'>s<CR>
@@ -250,7 +252,7 @@
     noremap <C-P> :FZF<CR>
 
     Plug 'scrooloose/nerdtree'
-    Plug 'powerline/powerline', { 'rtp': 'powerline/bindings/vim/' }
+    Plug 'vim-airline/vim-airline'
     Plug 'vim-scripts/ZoomWin'
   " }}}
   " Writing {{{
