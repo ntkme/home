@@ -177,6 +177,7 @@
     Plug 'timcharper/textile.vim'
     Plug 'tmux-plugins/vim-tmux'
     Plug 'posva/vim-vue'
+    autocmd FileType vue syntax sync fromstart
   " }}}
   " Editing {{{
     Plug 'tpope/vim-abolish'
@@ -203,7 +204,6 @@
     Plug 'w0rp/ale'
     Plug 'jiangmiao/auto-pairs'
     Plug 'Chiel92/vim-autoformat'
-    Plug 'tpope/vim-commentary'
     Plug 'junegunn/vim-easy-align'
     Plug 'mattn/emmet-vim'
     Plug 'tpope/vim-endwise'
@@ -215,7 +215,6 @@
     Plug 'michaeljsmith/vim-indent-object'
     runtime macros/matchit.vim
     Plug 'terryma/vim-multiple-cursors'
-    Plug 'scrooloose/nerdcommenter'
     Plug 'moll/vim-node', { 'for': 'javascript' }
     Plug 'tpope/vim-rails', { 'for': 'ruby' }
     Plug 'tpope/vim-scriptease'
@@ -223,6 +222,7 @@
     let g:signify_disable_by_default = 1
 
     Plug 'AndrewRadev/splitjoin.vim'
+    Plug 'tomtom/tcomment_vim'
     Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --tern-completer' }
     Plug 'ntpeters/vim-better-whitespace'
     Plug 'tpope/vim-unimpaired'
