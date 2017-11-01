@@ -15,5 +15,6 @@
 /.k5login
 /.netrc
 /.npmrc
+/.nvidia-settings-rc
 
 !/.tmux.conf
