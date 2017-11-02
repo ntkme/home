@@ -17,4 +17,6 @@
 /.npmrc
 /.nvidia-settings-rc
 
+!/.Xkbmap
+!/.Xmodmap
 !/.tmux.conf

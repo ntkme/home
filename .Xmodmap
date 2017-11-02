@@ -1,0 +1,9 @@
+! map Caps_Lock -> Control
+clear Lock
+keysym Caps_Lock = Control_L
+add Lock = Caps_Lock
+add Control = Control_L
+
+! map Shift_L + Shift_R -> Caps_Lock
+keysym Shift_L = Shift_L Caps_Lock Shift_L
+keysym Shift_R = Shift_R Caps_Lock Shift_R
