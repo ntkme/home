@@ -222,6 +222,7 @@
     let g:signify_disable_by_default = 1
 
     Plug 'AndrewRadev/splitjoin.vim'
+    Plug 'tpope/vim-surround'
     Plug 'tomtom/tcomment_vim'
     Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --tern-completer' }
     Plug 'ntpeters/vim-better-whitespace'
