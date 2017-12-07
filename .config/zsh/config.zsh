@@ -37,8 +37,21 @@ zle -N edit-command-line
 function {
   [ $? -ne 0 ] && return 1
 
-  [[ $- == *i* ]] && . "$1/shell/completion.zsh"
-  . "$1/shell/key-bindings.zsh"
+  if [[ $- == *i* ]]; then
+    source "$1/shell/completion.zsh"
+
+    if command -v fd &>/dev/null; then
+      _fzf_compgen_path () {
+        command fd --hidden --follow --exclude ".git" --exclude ".svn" "$1"
+      }
+
+      _fzf_compgen_dir () {
+        command fd --type d --hidden --follow --exclude ".git" --exclude ".svn" . "$1"
+      }
+    fi
+  fi
+
+  source "$1/shell/key-bindings.zsh"
 } "$(function {
     [ $? -ne 0 ] && return 1
 
