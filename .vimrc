@@ -224,7 +224,7 @@
     Plug 'AndrewRadev/splitjoin.vim'
     Plug 'tpope/vim-surround'
     Plug 'tomtom/tcomment_vim'
-    Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --tern-completer' }
+    Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --js-completer' }
     Plug 'ntpeters/vim-better-whitespace'
     Plug 'tpope/vim-unimpaired'
   " }}}
