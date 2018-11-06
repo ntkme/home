@@ -179,6 +179,7 @@
     Plug 'groenewege/vim-less'
     Plug 'tpope/vim-liquid'
     Plug 'tpope/vim-markdown'
+    Plug 'unblevable/quick-scope'
     Plug 'vim-ruby/vim-ruby'
     Plug 'wavded/vim-stylus'
     Plug 'timcharper/textile.vim'
@@ -204,8 +205,6 @@
     xmap <C-l> <Plug>(textmanip-move-right)
     nmap <F10> <Plug>(textmanip-toggle-mode)
     xmap <F10> <Plug>(textmanip-toggle-mode)
-
-    Plug 'justinmk/vim-sneak'
   " }}}
   " Programming {{{
     Plug 'w0rp/ale'
