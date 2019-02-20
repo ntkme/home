@@ -7,11 +7,11 @@
 
 case $(uname) in
   Darwin)
-    test -x /usr/local/bin/brew && eval "$(/usr/local/bin/brew shellenv)"
+    test -z ${HOMEBREW_PREFIX:+null} && test -x /usr/local/bin/brew && eval "$(SHELL=/bin/sh /usr/local/bin/brew shellenv)"
     ;;
   Linux)
-    test -x /home/linuxbrew/.linuxbrew/bin/brew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-    test -x "$HOME/.linuxbrew/bin/brew" && eval "$("$HOME/.linuxbrew/bin/brew" shellenv)"
+    test -z ${HOMEBREW_PREFIX:+null} && test -x /home/linuxbrew/.linuxbrew/bin/brew && eval "$(SHELL=/bin/sh /home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    test -z ${HOMEBREW_PREFIX:+null} && test -x ~/.linuxbrew/bin/brew && eval "$(SHELL=/bin/sh ~/.linuxbrew/bin/brew shellenv)"
 
     alias ls='ls --color=auto'
     ;;
