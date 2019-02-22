@@ -1,5 +1,6 @@
-fish_env ~/.env
 set -gx fish_greeting
+
+sed -e "s/^\([a-zA-Z_][a-zA-Z0-9_]*\)=\(.*\)/set -gx \\1\ \\2/" -- ~/.env | source
 
 switch (uname)
   case 'Darwin'

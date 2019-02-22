@@ -5,6 +5,10 @@
 # `bash`
 # `zsh`
 
+set -a
+. ~/.env
+set +a
+
 case $(uname) in
   Darwin)
     test -z ${HOMEBREW_PREFIX:+null} && test -x /usr/local/bin/brew && eval "$(SHELL=/bin/sh /usr/local/bin/brew shellenv)"

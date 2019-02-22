@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 # Zsh function path
 fpath=( ~/.config/zsh/functions ~/.config/bash/functions ~/.config/sh/functions "${fpath[@]}" )
 
