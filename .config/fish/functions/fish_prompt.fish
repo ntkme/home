@@ -32,11 +32,11 @@ function fish_prompt -d "Write out the prompt"
   end; or begin
     which hg >/dev/null ^&1; and hg root >/dev/null ^&1; and printf '☿'
   end; or begin
-    which svn >/dev/null ^&1; and svn info >/dev/null ^&1; and printf '⚡'
+    which svn >/dev/null ^&1; and svn info >/dev/null ^&1; and printf '∫'
   end; or begin
     [ (id -u) = 0 ]; and printf '√'
   end; or begin
-    printf '↪'
+    printf '❡'
   end
 
   printf ' '
