@@ -35,6 +35,8 @@
     set smartcase
   " }}}
   " Text Editing {{{
+    set nomodeline
+
     set autoindent
     set smartindent
 
