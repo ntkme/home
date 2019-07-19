@@ -1,6 +1,6 @@
 set -gx fish_greeting
 
-sed -e 's/^\([a-zA-Z_][a-zA-Z0-9_]*\)=\(.*\)/set -gx \\1\ \\2/' -- ~/.env | source
+env -i -- sh -c ". \"$HOME/.env\" && exec env -u _ -u PWD -u SHLVL" | sed -e 's/^\([a-zA-Z_][a-zA-Z0-9_]*\)=\(.*\)/set -gx \1 \2/' | source
 
 switch (uname)
   case 'Darwin'

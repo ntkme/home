@@ -5,9 +5,7 @@
 # `bash`
 # `zsh`
 
-set -a
 . ~/.env
-set +a
 
 case $(uname) in
   Darwin)
