@@ -208,12 +208,19 @@
     nmap <F10> <Plug>(textmanip-toggle-mode)
     xmap <F10> <Plug>(textmanip-toggle-mode)
   " }}}
+  " Completion {{{
+    Plug 'neoclide/coc.nvim', {
+      \ 'tag': '*', 'branch': 'release',
+      \ 'do': ':CocInstall -sync coc-lists coc-css coc-emmet coc-html coc-tsserver coc-java'
+      \ }
+    inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+  " }}}
   " Programming {{{
     Plug 'w0rp/ale'
     Plug 'jiangmiao/auto-pairs'
     Plug 'Chiel92/vim-autoformat'
     Plug 'junegunn/vim-easy-align'
-    Plug 'mattn/emmet-vim'
     Plug 'tpope/vim-endwise'
     Plug 'tpope/vim-fugitive'
     Plug 'gregsexton/gitv'
@@ -232,7 +239,6 @@
     Plug 'AndrewRadev/splitjoin.vim'
     Plug 'tpope/vim-surround'
     Plug 'tomtom/tcomment_vim'
-    Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
     Plug 'ntpeters/vim-better-whitespace'
     Plug 'tpope/vim-unimpaired'
   " }}}
