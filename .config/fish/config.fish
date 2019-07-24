@@ -1,6 +1,6 @@
 set -gx fish_greeting
 
-env -i -- sh -c ". \"$HOME/.env\" && exec env -u _ -u PWD -u SHLVL" | sed -e 's/^/set -gx /' -e 's/=/ /' | source
+psource ~/.env
 
 switch (uname)
   case 'Darwin'
