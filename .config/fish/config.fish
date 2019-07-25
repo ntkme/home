@@ -1,6 +1,8 @@
 set -gx fish_greeting
 
-psource ~/.env
+begin # https://github.com/fish-shell/fish-shell/issues/6007
+  psource ~/.env
+end | cat
 
 switch (uname)
   case 'Darwin'
