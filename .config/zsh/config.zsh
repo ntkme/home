@@ -74,6 +74,7 @@ bindkey '\e\e' edit-command-line
 bindkey -a '\e\e' edit-command-line
 
 if type fzf-history-widget &>/dev/null; then
+  bindkey '^R' fzf-history-widget
   bindkey '\e/' fzf-history-widget
   bindkey '\e?' fzf-history-widget
   bindkey -a '/' fzf-history-widget
