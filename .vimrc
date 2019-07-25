@@ -230,8 +230,6 @@
     Plug 'michaeljsmith/vim-indent-object'
     runtime macros/matchit.vim
     Plug 'terryma/vim-multiple-cursors'
-    Plug 'moll/vim-node', { 'for': 'javascript' }
-    Plug 'tpope/vim-rails', { 'for': 'ruby' }
     Plug 'tpope/vim-scriptease'
     Plug 'mhinz/vim-signify'
     let g:signify_disable_by_default = 1
