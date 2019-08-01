@@ -1,9 +1,12 @@
 #!/bin/sh
 
 # This file will load under following conditions
-# `sh --login`
+# `sh -l`
 # `bash`
+# `dash -l`
 # `zsh`
+
+set -o vi
 
 . ~/.env
 
