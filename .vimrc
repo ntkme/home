@@ -86,7 +86,7 @@
       set titleold=
     endif
 
-    if has('gui_running')
+    if has('macunix') && system('defaults read -g AppleInterfaceStyle') !=# "Dark\n"
       set background=light
     else
       set background=dark
