@@ -156,11 +156,7 @@
 " Plug {{{
   call plug#begin('~/.vim/plugged')
   " Colorschemes {{{
-    Plug 'chriskempson/base16-vim', { 'on': [] }
-    Plug 'larssmit/vim-getafe', { 'on': [] }
-    Plug 'ciaranm/inkpot', { 'on': [] }
-    Plug 'twerth/ir_black', { 'on': [] }
-    Plug 'nelstrom/vim-mac-classic-theme'
+    Plug 'arzg/vim-colors-xcode'
     Plug 'tomasr/molokai'
     let g:molokai_original = 0
     let g:rehash256 = 1
@@ -275,7 +271,7 @@
 
 " Colorscheme {{{
   if &background == 'light'
-    silent! colorscheme mac_classic
+    silent! colorscheme xcodelight
   else
     silent! colorscheme molokai
   endif
