@@ -179,6 +179,7 @@
     Plug 'tpope/vim-markdown'
     Plug 'unblevable/quick-scope'
     Plug 'vim-ruby/vim-ruby'
+    Plug 'cakebaker/scss-syntax.vim'
     Plug 'wavded/vim-stylus'
     Plug 'timcharper/textile.vim'
     Plug 'tmux-plugins/vim-tmux'
