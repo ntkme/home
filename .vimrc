@@ -168,7 +168,7 @@
   " }}}
   " Syntax {{{
     Plug 'kchmck/vim-coffee-script'
-    Plug 'JulesWang/css.vim'
+    Plug 'hail2u/vim-css3-syntax'
     Plug 'ap/vim-css-color'
     Plug 'dag/vim-fish'
     Plug 'tpope/vim-git'
