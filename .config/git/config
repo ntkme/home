@@ -17,5 +17,7 @@
 	default = simple
 [rebase]
 	autoSquash = true
+[tag]
+	sort = version:refname
 [user]
 	useConfigOnly = true
