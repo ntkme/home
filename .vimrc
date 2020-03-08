@@ -160,11 +160,6 @@
     Plug 'tomasr/molokai'
     let g:molokai_original = 0
     let g:rehash256 = 1
-
-    Plug 'altercation/vim-colors-solarized', { 'on': [] }
-    let g:solarized_termcolors = &t_Co
-
-    Plug 'jnurmine/Zenburn', { 'on': [] }
   " }}}
   " Syntax {{{
     Plug 'kchmck/vim-coffee-script'
