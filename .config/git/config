@@ -3,12 +3,12 @@
 	statusHints = false
 	detachedHead = false
 [branch]
-	autosetupmerge = always
-	autosetuprebase = always
+	autoSetupMerge = always
+	autoSetupRebase = always
 [core]
 	autocrlf = input
-	excludesfile = ~/.config/git/ignore
-	attributesfile = ~/.config/git/attributes
+	excludesFile = ~/.config/git/ignore
+	attributesFile = ~/.config/git/attributes
 [color]
 	ui = true
 [pull]
@@ -16,6 +16,6 @@
 [push]
 	default = simple
 [rebase]
-	autosquash = true
+	autoSquash = true
 [user]
-	useconfigonly = true
+	useConfigOnly = true
