@@ -16,6 +16,7 @@
 /.netrc
 /.npmrc
 /.nvidia-settings-rc
+/.sommelierrc
 /.vuerc
 
 !/.Xkbmap
