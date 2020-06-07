@@ -1,0 +1,43 @@
+#!/bin/sh
+
+set -e
+
+if ! command -v brew >/dev/null 2>&1; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+fi
+case "$(uname)" in
+  Darwin)
+    eval "$(SHELL=/bin/sh /usr/local/bin/brew shellenv)"
+    ;;
+  Linux)
+    eval "$(SHELL=/bin/sh ~/.linuxbrew/bin/brew shellenv)"
+    brew install patchelf
+    ;;
+esac
+
+xargs brew install <<'EOF'
+  ag
+  fd
+  fzf
+  node
+  sqlite
+  vim
+EOF
+
+case "$(uname)" in
+  Darwin)
+    brew install docker docker-machine-driver-xhyve
+    sudo chown root:wheel "$HOMEBREW_PREFIX/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve"
+    sudo chmod u+s "$HOMEBREW_PREFIX/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve"
+    if ! docker-machine inspect default >/dev/null 2>&1; then
+      docker-machine create --driver xhyve default
+    fi
+    ;;
+  Linux)
+    if ! command -v docker dockerd >/dev/null 2>&1; then
+      echo "==> Installing docker"
+      /bin/bash -c "$(curl -fsSL https://get.docker.com)"
+      sudo usermod -aG docker "$(whoami)"
+    fi
+    ;;
+esac
