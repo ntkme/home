@@ -1,11 +1,11 @@
 /*
 
-!/.*config
 !/.*env
 !/.*profile
 !/.*rc
 !/.*login
 !/.*logout
+!/.config/
 !/.git*
 !/.tmux.conf
 !/.Xkbmap
