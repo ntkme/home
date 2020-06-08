@@ -1,6 +1,8 @@
 *~
 
-#  #
+# 
+.AppleDB/
+.AppleDesktop/
 .AppleDouble/
 .DS_Store
 .DocumentRevisions-V100/
@@ -10,6 +12,10 @@
 .Trashes/
 .VolumeIcon.icns
 ._*
+.apdisk
+.com.apple.timemachine.donotpresent
 .fseventsd/
 .localized
-Icon
+Icon[]
+Network Trash Folder/
+Temporary Items/
