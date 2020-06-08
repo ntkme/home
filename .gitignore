@@ -1,25 +1,38 @@
 /*
 
+!/.*config
 !/.*env
 !/.*profile
 !/.*rc
 !/.*login
 !/.*logout
-!/.*config
 !/.git*
+!/.tmux.conf
+!/.Xkbmap
+!/.Xmodmap
 
-/.gitconfig
-/.git-credentials
-/.idlerc/
 /.dmrc
 /.htoprc
+/.idlerc/
 /.k5login
+/.gitconfig
+/.git-credentials
 /.netrc
 /.npmrc
 /.nvidia-settings-rc
 /.sommelierrc
 /.vuerc
 
-!/.Xkbmap
-!/.Xmodmap
-!/.tmux.conf
+/.config/*
+!/.config/bash/
+!/.config/fish/
+!/.config/git/
+!/.config/nvim/
+!/.config/sh/
+!/.config/zsh/
+
+/.config/fish/fishd.*
+/.config/fish/fish_history
+/.config/fish/fish_read_history
+/.config/fish/fish_variables
+/.config/git/credentials
