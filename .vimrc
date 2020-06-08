@@ -162,20 +162,13 @@
     let g:rehash256 = 1
   " }}}
   " Syntax {{{
-    Plug 'kchmck/vim-coffee-script'
-    Plug 'hail2u/vim-css3-syntax'
     Plug 'ap/vim-css-color'
     Plug 'dag/vim-fish'
     Plug 'tpope/vim-git'
-    Plug 'othree/html5.vim'
-    Plug 'pangloss/vim-javascript'
-    Plug 'groenewege/vim-less'
     Plug 'tpope/vim-liquid'
     Plug 'tpope/vim-markdown'
     Plug 'unblevable/quick-scope'
     Plug 'vim-ruby/vim-ruby'
-    Plug 'cakebaker/scss-syntax.vim'
-    Plug 'wavded/vim-stylus'
     Plug 'timcharper/textile.vim'
     Plug 'tmux-plugins/vim-tmux'
   " }}}
