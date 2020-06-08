@@ -1,22 +1,22 @@
 /*
 
 !/.*env
-!/.*profile
-!/.*rc
 !/.*login
 !/.*logout
+!/.*profile
+!/.*rc
+!/.Xkbmap
+!/.Xmodmap
 !/.config/
 !/.git*
 !/.tmux.conf
-!/.Xkbmap
-!/.Xmodmap
 
 /.dmrc
+/.git-credentials
+/.gitconfig
 /.htoprc
 /.idlerc/
 /.k5login
-/.gitconfig
-/.git-credentials
 /.netrc
 /.npmrc
 /.nvidia-settings-rc
@@ -31,8 +31,8 @@
 !/.config/sh/
 !/.config/zsh/
 
-/.config/fish/fishd.*
 /.config/fish/fish_history
 /.config/fish/fish_read_history
 /.config/fish/fish_variables
+/.config/fish/fishd.*
 /.config/git/credentials
