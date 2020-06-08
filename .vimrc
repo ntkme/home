@@ -102,6 +102,10 @@
     endif
 
     set nonumber
+    if has('patch-8.1.1564')
+      set signcolumn=number
+    endif
+
     set ruler
     set showcmd
     set laststatus=2
@@ -173,8 +177,11 @@
     Plug 'tmux-plugins/vim-tmux'
   " }}}
   " Editing {{{
-    Plug 'tpope/vim-abolish'
     Plug 'sjl/gundo.vim'
+    if has('python3')
+      let g:gundo_prefer_python3 = 1
+    endif
+
     Plug 'kana/vim-fakeclip'
     Plug 'farmergreg/vim-lastplace'
     Plug 'chrisbra/NrrwRgn'
