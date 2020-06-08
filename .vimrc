@@ -13,7 +13,7 @@
     set hidden
     set autowrite
     set autoread
-    set directory=/tmp//
+    set directory=/var/tmp//,/tmp//
     set swapfile
     set backupdir=~/.vim/backup//
     set nobackup
