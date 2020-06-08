@@ -178,8 +178,6 @@
     Plug 'wavded/vim-stylus'
     Plug 'timcharper/textile.vim'
     Plug 'tmux-plugins/vim-tmux'
-    Plug 'posva/vim-vue'
-    autocmd FileType vue syntax sync fromstart
   " }}}
   " Editing {{{
     Plug 'tpope/vim-abolish'
@@ -203,7 +201,7 @@
   " Completion {{{
     Plug 'neoclide/coc.nvim', {
       \ 'tag': '*', 'branch': 'release',
-      \ 'do': ':CocInstall -sync coc-lists coc-css coc-emmet coc-html coc-tsserver coc-java'
+      \ 'do': ':CocInstall -sync coc-lists coc-css coc-emmet coc-html coc-tsserver coc-java coc-vetur'
       \ }
     inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
     inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
