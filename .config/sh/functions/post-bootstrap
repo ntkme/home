@@ -21,6 +21,7 @@ xargs brew install <<'EOF'
   fzf
   node
   sqlite
+  tmux
   vim
 EOF
 
