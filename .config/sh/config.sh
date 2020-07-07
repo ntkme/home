@@ -16,7 +16,7 @@ case "$(uname)" in
 
     test -z "$DOCKER_HOST" && command -v docker-machine >/dev/null && eval "$(docker-machine env 2>/dev/null)"
 
-    test -z "$JAVA_HOME" && JAVA_HOME=$(/usr/libexec/java_home 2>/dev/null) && export JAVA_HOME
+    test -z "$JAVA_HOME" && JAVA_HOME=$(/usr/libexec/java_home 2>/dev/null) && export JAVA_HOME  || unset JAVA_HOME
     ;;
   Linux)
     test -z "$HOMEBREW_PREFIX" && test -x ~/.linuxbrew/bin/brew && eval "$(SHELL=/bin/sh ~/.linuxbrew/bin/brew shellenv)"
