@@ -13,6 +13,10 @@ set -o vi
 case "$(uname)" in
   Darwin)
     test -z ${HOMEBREW_PREFIX:+null} && test -x /usr/local/bin/brew && eval "$(SHELL=/bin/sh /usr/local/bin/brew shellenv)"
+
+    JAVA_HOME="$(/usr/libexec/java_home 2>/dev/null)"
+    test -n "$JAVA_HOME" && export JAVA_HOME || unset JAVA_HOME
+
     command -v docker-machine >/dev/null && eval $(docker-machine env 2>/dev/null)
     ;;
   Linux)
