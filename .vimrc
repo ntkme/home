@@ -248,7 +248,7 @@
     nmap - <Plug>(choosewin)
     let g:choosewin_overlay_enable = 1
 
-    Plug 'junegunn/fzf', { 'do': './install --bin' }
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
     noremap <C-P> :FZF<CR>
 
