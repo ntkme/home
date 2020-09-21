@@ -29,3 +29,9 @@ esac
 alias ll='ls -lh'
 alias la='ls -lAh'
 alias grep='grep --color=auto'
+alias docker-compose='docker run --rm \
+    --hostname "$(hostname -f)" \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v "$PWD:$PWD" \
+    -w "$PWD" \
+    docker/compose:1.27.3'
