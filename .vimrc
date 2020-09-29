@@ -200,7 +200,7 @@
   " }}}
   " Completion {{{
     Plug 'neoclide/coc.nvim', {
-      \ 'tag': '*', 'branch': 'release',
+      \ 'branch': 'release',
       \ 'do': ':CocInstall -sync coc-lists coc-css coc-emmet coc-html coc-tsserver coc-java coc-vetur'
       \ }
     inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
