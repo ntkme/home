@@ -11,6 +11,8 @@
 	attributesFile = ~/.config/git/attributes
 [color]
 	ui = true
+[init]
+	defaultBranch = main
 [pull]
 	rebase = merges
 [push]
