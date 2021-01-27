@@ -4,6 +4,7 @@ psource ~/.env
 
 switch (uname)
   case 'Darwin'
+    not set -q HOMEBREW_PREFIX; and test -x /opt/homebrew/bin/brew; and SHELL=/bin/fish /opt/homebrew/bin/brew shellenv | source
     not set -q HOMEBREW_PREFIX; and test -x /usr/local/bin/brew; and SHELL=/bin/fish /usr/local/bin/brew shellenv | source
 
     not set -q DOCKER_HOST; and type -q docker-machine; and docker-machine env 2>/dev/null | source
