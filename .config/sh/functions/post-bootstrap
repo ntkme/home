@@ -24,21 +24,3 @@ xargs brew install <<'EOF'
   tmux
   vim
 EOF
-
-case "$(uname)" in
-  Darwin)
-    brew install docker docker-machine-driver-xhyve
-    sudo chown root:wheel "$HOMEBREW_PREFIX/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve"
-    sudo chmod u+s "$HOMEBREW_PREFIX/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve"
-    if ! docker-machine inspect default >/dev/null 2>&1; then
-      docker-machine create --driver xhyve default
-    fi
-    ;;
-  Linux)
-    if ! command -v docker dockerd >/dev/null 2>&1; then
-      echo "==> Installing docker"
-      /bin/bash -c "$(curl -fsSL https://get.docker.com)"
-      sudo usermod -aG docker "$(whoami)"
-    fi
-    ;;
-esac
