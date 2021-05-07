@@ -14,7 +14,6 @@ case "$(uname)" in
     ;;
   Linux)
     eval "$(SHELL=/bin/sh ~/.linuxbrew/bin/brew shellenv)"
-    brew install patchelf
     ;;
 esac
 
