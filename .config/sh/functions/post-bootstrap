@@ -26,3 +26,19 @@ xargs brew install <<'EOF'
   tmux
   vim
 EOF
+
+case "$(uname)" in
+  Linux)
+    if dpkg -l cros-guest-tools podman >/dev/null 2>&1; then
+      echo "\033[0;34m==>\033[0m \033[1mCaveats\033[0m"
+      cat <<'EOF'
+To run rootless podman containers, open Google Chrome, press Ctrl + Alt + T to get the crosh shell, and run:
+  vsh termina
+  lxc config set penguin security.nesting true
+  lxc restart penguin
+  lxc exec penguin -- /bin/sh -c "printf '%s\n' '[containers]' 'keyring = false' | tee /etc/containers/containers.conf"
+  lxc exec penguin -- /bin/sh -c "printf '%s\n' '1000:100000:65536' | tee /etc/subuid /etc/subgid"
+EOF
+    fi
+    ;;
+esac
