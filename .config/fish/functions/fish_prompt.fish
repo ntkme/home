@@ -30,10 +30,6 @@ function fish_prompt -d "Write out the prompt"
       not [ (git rev-parse --show-toplevel 2>/dev/null) = "$HOME" ]; or not git check-ignore --quiet "$PWD" 2>/dev/null
     end; and printf '±'
   end; or begin
-    type -q hg >/dev/null 2>&1; and hg root >/dev/null 2>&1; and printf '☿'
-  end; or begin
-    type -q svn >/dev/null 2>&1; and svn info >/dev/null 2>&1; and printf '↯'
-  end; or begin
     [ (id -u) = 0 ]; and printf '√'
   end; or begin
     printf '↳'

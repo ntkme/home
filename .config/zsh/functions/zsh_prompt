@@ -29,9 +29,7 @@ _prompt_virtual_env () {
 }
 
 _prompt_indicator () {
-  git rev-parse 2>/dev/null && ! { [ "$(git rev-parse --show-toplevel 2>/dev/null)" = "$HOME" ] && git check-ignore --quiet "$PWD" 2>/dev/null } && echo '±' && return
-  hg root &>/dev/null && echo '☿' && return
-  svn info &>/dev/null && echo '↯' && return
+  git rev-parse 2>/dev/null && ! { [ "$(git rev-parse --show-toplevel 2>/dev/null)" = "$HOME" ] && git check-ignore --quiet "$PWD" 2>/dev/null; } && echo '±' && return
   echo '%(!.√.↳)'
 }
 
