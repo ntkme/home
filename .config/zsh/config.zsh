@@ -5,8 +5,8 @@ fpath=( ~/.config/zsh/functions ~/.config/bash/functions ~/.config/sh/functions 
 
 # History
 HISTFILE=$HOME/.zsh_history
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=65535
+SAVEHIST=65535
 setopt append_history hist_ignore_dups hist_ignore_space
 
 # Settings
