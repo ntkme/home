@@ -5,13 +5,13 @@ set -e
 if [ -r /etc/os-release ]; then
   case "$(. /etc/os-release && echo "$ID")" in
     debian)
-      curl -fsSL "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_$(. /etc/os-release && echo "$VERSION_ID")/Release.key" | sudo gpg --dearmor --yes -o /usr/share/keyrings/libcontainers-archive-keyring.gpg
-      echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/libcontainers-archive-keyring.gpg] https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_$(. /etc/os-release && echo "$VERSION_ID")/ /" | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
+      curl -fsSL "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_$(. /etc/os-release && echo "$VERSION_ID")/Release.key" | sudo gpg --dearmor --yes -o /usr/share/keyrings/kubic-libcontainers-archive-keyring.gpg
+      echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/kubic-libcontainers-archive-keyring.gpg] https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_$(. /etc/os-release && echo "$VERSION_ID")/ /" | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
       sudo apt update -qq
       ;;
     ubuntu)
-      curl -fsSL "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_$(. /etc/os-release && echo "$VERSION_ID")/Release.key" | sudo gpg --dearmor --yes -o /usr/share/keyrings/libcontainers-archive-keyring.gpg
-      echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/libcontainers-archive-keyring.gpg] https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_$(. /etc/os-release && echo "$VERSION_ID")/ /" | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
+      curl -fsSL "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_$(. /etc/os-release && echo "$VERSION_ID")/Release.key" | sudo gpg --dearmor --yes -o /usr/share/keyrings/kubic-libcontainers-archive-keyring.gpg
+      echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/kubic-libcontainers-archive-keyring.gpg] https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_$(. /etc/os-release && echo "$VERSION_ID")/ /" | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
       sudo apt update -qq
       ;;
   esac
