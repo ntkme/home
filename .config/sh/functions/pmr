@@ -2,7 +2,9 @@
 
 command podman run --rm -it \
   --entrypoint /bin/bash \
-  --volume "$HOME/.config:/root/.config:ro" \
+  --volume "$HOME/.config/git/attributes:/root/.config/git/attributes:ro" \
+  --volume "$HOME/.config/git/config:/root/.config/git/config:ro" \
+  --volume "$HOME/.config/git/ignore:/root/.config/git/ignore:ro" \
   --volume "$HOME/.gitconfig:/root/.gitconfig:ro" \
   --volume "$PWD:$PWD" \
   --workdir "$PWD" \
