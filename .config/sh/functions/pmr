@@ -2,6 +2,7 @@
 
 command podman run --rm -it \
   --entrypoint /bin/bash \
+  --env "debian_chroot=$1" \
   --volume "$HOME/.config/git/attributes:/root/.config/git/attributes:ro" \
   --volume "$HOME/.config/git/config:/root/.config/git/config:ro" \
   --volume "$HOME/.config/git/ignore:/root/.config/git/ignore:ro" \
