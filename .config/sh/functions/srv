@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [ "$(basename "$0")" = "90-enable-autoindex.sh" ]; then
+  sed -e '/ index /a\        autoindex on;' -i /etc/nginx/conf.d/default.conf
+else
+  command podman run --rm -it \
+    --publish "${1:-8080}:8080/tcp" \
+    --volume "$0:/docker-entrypoint.d/90-enable-autoindex.sh:ro" \
+    --volume "$PWD:/usr/share/nginx/html:ro" \
+    docker.io/nginxinc/nginx-unprivileged:latest
+fi
