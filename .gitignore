@@ -25,8 +25,8 @@
 /.yarnrc
 
 /.config/*
-!/.config/containers/
 !/.config/bash/
+!/.config/containers/
 !/.config/fish/
 !/.config/git/
 !/.config/nvim/
