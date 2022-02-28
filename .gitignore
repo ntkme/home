@@ -25,6 +25,7 @@
 /.yarnrc
 
 /.config/*
+!/.config/containers/
 !/.config/bash/
 !/.config/fish/
 !/.config/git/
