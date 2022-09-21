@@ -28,6 +28,8 @@ zstyle ':completion:*:processes' menu yes select
 zstyle ':completion:*:processes' force-list always
 zstyle ':completion:*:processes' list-colors "=(#b) #([0-9]#)*=36=31"
 
+command -v kubectl &>/dev/null && source <(kubectl completion zsh)
+
 # Prompt
 autoload -U zsh_prompt_float && zsh_prompt_float
 
