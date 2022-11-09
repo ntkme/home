@@ -1,6 +1,7 @@
 #!/bin/sh
 
 command podman container run --rm -it \
+  --security-opt label=disable \
   --entrypoint '["/bin/sh", "-c", "export PS1=\"${debian_chroot:+($debian_chroot)}\\u@\\h:\\w\\\\$ \"; test -x /bin/zsh && exec /bin/zsh \"$@\" || test -x /bin/bash && exec /bin/bash \"$@\" || exec /bin/sh \"$@\"", "--"]' \
   --env "debian_chroot=$1" \
   --volume "$HOME/.config/git/attributes:/root/.config/git/attributes:ro" \
