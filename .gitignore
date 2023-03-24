@@ -5,6 +5,7 @@
 !/.*logout
 !/.*profile
 !/.*rc
+!/.Brewfile
 !/.Xkbmap
 !/.Xmodmap
 !/.config/

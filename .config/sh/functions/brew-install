@@ -1,0 +1,16 @@
+#!/bin/sh
+
+set -e
+
+if ! command -v brew >/dev/null 2>&1; then
+  if [ "$HOME" = /home/linuxbrew ]; then
+    export NONINTERACTIVE=1
+  fi
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+fi
+
+. ~/.config/sh/functions/brew-shellenv
+
+if test -f ~/.Brewfile; then
+  brew bundle --global --no-lock
+fi
