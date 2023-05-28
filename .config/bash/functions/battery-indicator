@@ -39,11 +39,15 @@ EOF
         while read i; do
           local "$i"
         done <<< "$AppleSmartBattery"
-        Ratio="$CurrentCapacity / $MaxCapacity"
-        if [ "$IsCharging" = "Yes" ]; then
-          Status='+'
-        elif [ "$FullyCharged" = "Yes" ]; then
-          Status='='
+        if [ "$MaxCapacity" -eq 0 ]; then
+          NoBattery=1
+        else
+          Ratio="$CurrentCapacity / $MaxCapacity"
+          if [ "$IsCharging" = "Yes" ]; then
+            Status='+'
+          elif [ "$FullyCharged" = "Yes" ]; then
+            Status='='
+          fi
         fi
       else
         NoBattery=1
