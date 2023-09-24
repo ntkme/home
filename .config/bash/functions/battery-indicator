@@ -31,7 +31,7 @@ EOF
     esac
   done
 
-  local Status='-' NoBattery=0 Ratio i
+  local Status='-' MaxCapacity=0 Ratio i
   case $(uname) in
     Darwin)
       local AppleSmartBattery=$(ioreg -rc AppleSmartBattery | tr -d '" ' | grep "^MaxCapacity\|^CurrentCapacity\|^FullyCharged\|^IsCharging")
@@ -39,18 +39,14 @@ EOF
         while read i; do
           local "$i"
         done <<< "$AppleSmartBattery"
-        if [ "$MaxCapacity" -eq 0 ]; then
-          NoBattery=1
-        else
-          Ratio="$CurrentCapacity / $MaxCapacity"
-          if [ "$IsCharging" = "Yes" ]; then
-            Status='+'
-          elif [ "$FullyCharged" = "Yes" ]; then
-            Status='='
-          fi
+        Ratio="$CurrentCapacity / $MaxCapacity"
+        if [ "$IsCharging" = "Yes" ]; then
+          Status='+'
+        elif [ "$FullyCharged" = "Yes" ]; then
+          Status='='
         fi
       else
-        NoBattery=1
+        MaxCapacity=0
       fi
       ;;
     Linux)
@@ -65,7 +61,7 @@ EOF
           Status='='
         fi
       else
-        NoBattery=1
+        MaxCapacity=0
       fi
       ;;
     *)
@@ -73,7 +69,7 @@ EOF
       return 1
       ;;
   esac
-  [ $NoBattery -eq 1 ] && echo "No battery is found." >&2 && return 1
+  [ $MaxCapacity -eq 0 ] && echo "No battery is found." >&2 && return 1
 
   local Prepend Append
   case $Theme in
