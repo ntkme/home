@@ -138,13 +138,6 @@
   endif
 " }}}
 
-" Misc {{{
-  if has('python3') && !has('patch-8.1.201')
-    " https://github.com/vim/vim/issues/3117
-    silent! python3 0
-  endif
-" }}}
-
 " Plug Install {{{
   if empty(glob('~/.vim/autoload/plug.vim'))
     silent ! curl -fsSLo ~/.vim/autoload/plug.vim --create-dirs
