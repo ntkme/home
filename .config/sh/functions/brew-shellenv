@@ -3,10 +3,18 @@
 if test -z "${HOMEBREW_PREFIX+_}"; then
   case "$(uname)" in
     Darwin)
-      eval "$(PATH=/opt/homebrew/bin:/usr/local/bin SHELL=/bin/sh brew shellenv 2>/dev/null)"
+      if test -x /opt/homebrew/bin/brew; then
+        eval "$(/opt/homebrew/bin/brew shellenv sh 2>/dev/null)"
+      elif test -x /usr/local/bin/brew; then
+        eval "$(/usr/local/bin/brew shellenv sh 2>/dev/null)"
+      fi
       ;;
     Linux)
-      eval "$(PATH="$HOME/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/bin" SHELL=/bin/sh brew shellenv 2>/dev/null)"
+      if test -x "$HOME/.linuxbrew/bin/brew"; then
+        eval "$("$HOME/.linuxbrew/bin/brew" shellenv sh 2>/dev/null)"
+      elif text -x /home/linuxbrew/.linuxbrew/bin/brew; then
+        eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv sh 2>/dev/null)"
+      fi
       ;;
   esac
 fi
