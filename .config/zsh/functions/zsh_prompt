@@ -18,7 +18,11 @@ _prompt_git_status () {
     if [ -n "$__git_toplevel" ]; then
       echo -n '%F{red}'
       [ -n "$(git status --porcelain --untracked-files=no --ignore-submodules=dirty)" ] && echo -n '!'
-      [ -n "$(timeout .2 git ls-files --other --exclude-standard -- "$__git_toplevel")" ] && echo -n '?'
+      if command -v timeout &>/dev/null; then
+        [ -n "$(timeout .2 git ls-files --other --exclude-standard -- "$__git_toplevel")" ] && echo -n '?'
+      else
+        [ -n "$(git ls-files --other --exclude-standard -- "$__git_toplevel")" ] && echo -n '?'
+      fi
     fi
     echo '%f '
   fi
