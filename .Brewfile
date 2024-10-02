@@ -1,3 +1,4 @@
+brew "coreutils" if OS.mac?
 brew "fd"
 brew "fzf"
 brew "gcc" if OS.linux?
