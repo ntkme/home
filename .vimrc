@@ -200,7 +200,7 @@
     inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
   " }}}
   " Programming {{{
-    Plug 'w0rp/ale'
+    Plug 'dense-analysis/ale'
     Plug 'jiangmiao/auto-pairs'
     Plug 'Chiel92/vim-autoformat'
     Plug 'junegunn/vim-easy-align'
