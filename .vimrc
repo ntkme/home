@@ -160,6 +160,7 @@
   " }}}
   " Syntax {{{
     Plug 'ap/vim-css-color'
+    Plug 'dart-lang/dart-vim-plugin'
     Plug 'dag/vim-fish'
     Plug 'tpope/vim-git'
     Plug 'tpope/vim-liquid'
