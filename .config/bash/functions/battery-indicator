@@ -34,7 +34,7 @@ EOF
   local Status='-' MaxCapacity=0 Ratio i
   case $(uname) in
     Darwin)
-      local AppleSmartBattery=$(ioreg -rc AppleSmartBattery | tr -d '" ' | grep "^MaxCapacity\|^CurrentCapacity\|^FullyCharged\|^IsCharging")
+      local AppleSmartBattery=$(ioreg -rc AppleSmartBattery -d 1 | tr -d ' |"' | grep "^MaxCapacity\|^CurrentCapacity\|^FullyCharged\|^IsCharging")
       if [ -n "$AppleSmartBattery" ]; then
         while read i; do
           local "$i"
