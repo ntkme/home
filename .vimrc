@@ -233,8 +233,6 @@
       Plug 'haya14busa/incsearch.vim', { 'on': []  }
     endif
 
-    Plug 'osyo-manga/vim-anzu'
-
     Plug 'xtal8/traces.vim'
   " }}}
   " User interface {{{
