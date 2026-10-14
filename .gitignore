@@ -21,6 +21,7 @@
 /.netrc
 /.npmrc
 /.nvidia-settings-rc
+/.rbenv/
 /.sommelierrc
 /.vuerc
 /.yarnrc
